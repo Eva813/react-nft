@@ -1,8 +1,8 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
-import CollectionCard from './components/CollectionCard';
 import Punklist from './components/Punklist';
+import Main from './components/Main';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -19,12 +19,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <CollectionCard
-        id={0}
-        name={'Bandane Punk'}
-        traits={[{ 'value': 7 }]}
-        image='https://nftlabs.mypinata.cloud/ipfs/bafybeigqkficum3anns36jid3dxvc4yfauyuvqjulbg43n23qxn3ce3tyu'
-      />
+      <Main />
       <Punklist punkListData={punkListData} />
     </div>
   );
