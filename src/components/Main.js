@@ -1,30 +1,46 @@
-import React from 'react'
-
-const Main = () => {
+import React, { useState, useEffect } from 'react'
+import instagramLogo from '../assets/owner/instagram.png'
+import twitterLogo from '../assets/owner/twitter.png'
+import moreIcon from '../assets/owner/more.png'
+import './Main.css'
+import Punklist from './Punklist'
+const Main = ({ selectedPunk, punkListData }) => {
+  const [activePunk, setActivePunk] = useState(punkListData[0])
+  useEffect(() => {
+    setActivePunk(punkListData[selectedPunk])
+  }, [punkListData, selectedPunk])
   return (
     <div className="main">
       <div className="mainContent">
         <div className="punkHighlight">
           <div className="punkContainer">
-            <img className="selectedPunk" src={'https://nftlabs.mypinata.cloud/ipfs/bafybeigqkficum3anns36jid3dxvc4yfauyuvqjulbg43n23qxn3ce3ty'} />
+            <img className="selectedPunk" src={activePunk.image_original_url} alt='image' />
           </div>
         </div>
-      </div>
-
-      <div className="punkDetails" style={{ color: 'fff' }}>
-        <div className="title">
-          Banda Punk
+        <div className="punkDetails" style={{ color: 'fff' }}>
+          <div className="title">
+            {activePunk.name}
+          </div>
+          <span className="itemNumber">.#{activePunk.token_id}</span>
         </div>
-        <span className="itemNumber">.#3</span>
-      </div>
-      <div className="owner">
-        <div className="ownerImageContainer">
-          <img src={'https://nftlabs.mypinata.cloud/ipfs/bafybeigqkficum3anns36jid3dxvc4yfauyuvqjulbg43n23qxn3ce3ty'} />
-        </div>
-        <div className="ownerDetails">
-          <div className="ownerNameAndHandle">
-            <div>0x767b91737fEe99BF0d3E157490ED3ab98E4430f2</div>
-            <div className="ownerHandle">@cleveryou</div>
+        <div className="owner">
+          <div className="ownerImageContainer">
+            <img src={activePunk.owner.profile_img_url} />
+          </div>
+          <div className="ownerDetails">
+            <div className="ownerNameAndHandle">
+              <div>{activePunk.owner.address}</div>
+              <div className="ownerHandle">@cleveryou</div>
+            </div>
+            <div className="ownerLink">
+              <img src={instagramLogo} alt='instagramLogo' />
+            </div>
+            <div className="ownerLink">
+              <img src={twitterLogo} alt='twitterLogo' />
+            </div>
+            <div className="ownerLink">
+              <img src={moreIcon} alt='moreIcon' />
+            </div>
           </div>
         </div>
       </div>
