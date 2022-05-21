@@ -7,6 +7,7 @@ import Punklist from './Punklist'
 const Main = ({ selectedPunk, punkListData }) => {
   const [activePunk, setActivePunk] = useState(punkListData[0])
   useEffect(() => {
+    console.log('data', punkListData[selectedPunk])
     setActivePunk(punkListData[selectedPunk])
   }, [punkListData, selectedPunk])
   return (
@@ -32,14 +33,16 @@ const Main = ({ selectedPunk, punkListData }) => {
               <div>{activePunk.owner.address}</div>
               <div className="ownerHandle">@cleveryou</div>
             </div>
-            <div className="ownerLink">
-              <img src={instagramLogo} alt='instagramLogo' />
-            </div>
-            <div className="ownerLink">
-              <img src={twitterLogo} alt='twitterLogo' />
-            </div>
-            <div className="ownerLink">
-              <img src={moreIcon} alt='moreIcon' />
+            <div className="linkGroup">
+              <div className="ownerLink">
+                <img src={instagramLogo} alt='instagramLogo' />
+              </div>
+              <div className="ownerLink">
+                <img src={twitterLogo} alt='twitterLogo' />
+              </div>
+              <div className="ownerLink">
+                <img src={moreIcon} alt='moreIcon' />
+              </div>
             </div>
           </div>
         </div>

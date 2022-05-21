@@ -65,8 +65,9 @@
 }
 .ownerDetails{
   display:flex;
-  align-items: center;
+  align-items: flex-start;
   flex:1;
+  flex-direction: column;
 }
 .ownerNameAndHandle{
   color:#00ebfe;
@@ -83,4 +84,9 @@
 .ownerLink > img{
   height: 100%;
   width: 100%;
+}
+
+.linkGroup{
+  display: flex;
+  margin-top: 2rem;
 }
